@@ -1,7 +1,7 @@
 import messageModel from "../../DB/models/message.model.js";
 import userModel from "../../DB/models/user.model.js";
 
-// إرسال رسالة
+// send message
 export const sendMessageService = async (req, res, next) => {
   const { content, receiverId } = req.body;
 
@@ -18,7 +18,7 @@ export const sendMessageService = async (req, res, next) => {
   return res.status(201).json({ message: "Message sent successfully", messageData: message });
 };
 
-// جلب رسائل المستخدم
+// استلام الرسايل
 export const getMessagesService = async (req, res, next) => {
   const messages = await messageModel.find({ receiverId: req.user._id });
 
@@ -29,7 +29,7 @@ export const getMessagesService = async (req, res, next) => {
   });
 };
 
-// حذف رسالة
+// delete message
 export const deleteMessageService = async (req, res, next) => {
   const { id } = req.params;
 

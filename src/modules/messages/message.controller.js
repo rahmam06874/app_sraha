@@ -11,13 +11,13 @@ import {
 
 const messageRouter = Router();
 
-// إرسال رسالة (مع الـ Auth والـ Validation)
+// post for message
 messageRouter.post("/", auth, validation(sendMessageSchema), sendMessageService);
 
-// عرض كل الرسائل الخاصة بالمستخدم
+// get for message
 messageRouter.get("/", auth, getMessagesService);
 
-// حذف رسالة بواسطة ID
+// delete for message
 messageRouter.delete("/:id", auth, deleteMessageService);
 
 export default messageRouter;
